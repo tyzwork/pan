@@ -8,6 +8,7 @@ $csrf_token = md5(mt_rand(0,999).time());
 $_SESSION['csrf_token'] = $csrf_token;
 ?>
 <div class="container" id="app">
+    <?php if(!empty($conf['ad_upload_top'])){?><div class="advertise well bs-component" align="center"><?php echo $conf['ad_upload_top']?></div><?php }?>
     <div class="row">
     
       <div class="col-sm-9">
@@ -82,6 +83,7 @@ $_SESSION['csrf_token'] = $csrf_token;
       </div>
     </div>
   </div>
+<?php if(!empty($conf['ad_upload_bottom'])){?><div class="advertise well bs-component" align="center"><?php echo $conf['ad_upload_bottom']?></div><?php }?>
 <div class="colorful_loading_frame">
   <div class="colorful_loading"><i class="rect1"></i><i class="rect2"></i><i class="rect3"></i><i class="rect4"></i><i class="rect5"></i></div>
 </div>

@@ -51,6 +51,7 @@
 			        <li><a href="./set.php?mod=file">文件上传设置</a><li>
 			        <li><a href="./set.php?mod=green">图片检测设置</a><li>
               <li><a href="./set.php?mod=api">上传API设置</a><li>
+              <li><a href="./set.php?mod=ad">广告位设置</a><li>
               <li><a href="./set.php?mod=iptype">用户IP地址设置</a><li>
               <li><a href="./set.php?mod=account">管理账号设置</a><li>
             </ul>

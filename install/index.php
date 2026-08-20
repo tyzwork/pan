@@ -33,8 +33,16 @@ if($step==3){
         $user=isset($_POST['user'])?$_POST['user']:null;
         $pwd=isset($_POST['pwd'])?$_POST['pwd']:null;
         $database=isset($_POST['database'])?$_POST['database']:null;
+        $admin_pwd=isset($_POST['admin_pwd'])?$_POST['admin_pwd']:'123456';
+        $admin_pwd2=isset($_POST['admin_pwd2'])?$_POST['admin_pwd2']:null;
         if(empty($host) || empty($port) || empty($user) || empty($pwd) || empty($database)){
             $errorMsg='请填写完整所有数据库信息！';
+        }
+        if(empty($admin_pwd)){
+            $admin_pwd='123456';
+        }
+        if($admin_pwd !== $admin_pwd2){
+            $errorMsg='两次输入的管理员密码不一致！';
         }
         $dbconfig=array(
             'host' => $host,
@@ -52,6 +60,8 @@ if($step==3){
     'pwd' => '{$pwd}', //数据库密码
     'dbname' => '{$database}' //数据库名
 );
+/*管理员密码（安装时设置）*/
+\$install_admin_pwd = " . var_export($admin_pwd, true) . ";
     ";
     }
     if(empty($errorMsg)){
@@ -99,6 +109,9 @@ if($step==3){
             $sqls=explode(';', $sqls);
             $sqls[]="INSERT INTO `pre_config` VALUES ('syskey', '".random(32)."')";
             $sqls[]="INSERT INTO `pre_config` VALUES ('build', '".date("Y-m-d")."')";
+            if(!empty($install_admin_pwd)){
+                $sqls[]="UPDATE `pre_config` SET `v`=".$DB->quote($install_admin_pwd)." WHERE `k`='admin_pwd'";
+            }
             $success=0;$error=0;$errorMsg=null;
             foreach ($sqls as $value) {
                 $value=trim($value);
@@ -174,6 +187,19 @@ if($step==3){
                                     <input type="text" name="database" class="form-control" required>
                                 </div>
                             </div>
+							<div class="form-group">
+                                <label class="col-sm-2 control-label">管理员密码</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="admin_pwd" class="form-control" value="123456" required>
+                                    <span class="help-block">请设置后台管理员登录密码，安装后可登录后台修改。</span>
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="col-sm-2 control-label">确认密码</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="admin_pwd2" class="form-control" value="123456" required>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-success btn-block">确认无误，下一步</button>
@@ -226,7 +252,7 @@ if(!empty($errorMsg)){
                     <?php if($success>0){?><div class="alert alert-success" role="alert">成功执行SQL语句<?php echo $success;?>条，失败<?php echo $error;?>条！</div><?php }?>
                     <ul class="list-group">
                         <li class="list-group-item">1、系统已成功安装完毕！</li>
-                        <li class="list-group-item">2、后台地址：<a href="../admin/" target="_blank">/admin/</a> 密码:123456</li>
+                        <li class="list-group-item">2、后台地址：<a href="../admin/" target="_blank">/admin/</a> 管理员账号:admin 密码:<?php echo htmlspecialchars(empty($install_admin_pwd)?'123456':$install_admin_pwd);?></li>
                         <li class="list-group-item">3、请及时修改后台管理员密码！</li>
                         <?php if(!$lock_status){?><li class="list-group-item">4、<font color="#FF0033">你的空间不支持本地文件读写，请自行在 /install/ 目录建立 install.lock 文件！</font></li><?php }?>
                         <li class="list-group-item"><a href="../" class="btn btn-block btn-default">进入网站首页</a></li>

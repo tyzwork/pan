@@ -26,6 +26,10 @@ class StorHelper
                 return ['operatorName' => $conf['upyun_user'], 'operatorPwd' => $conf['upyun_pwd'], 'serviceName' => $conf['upyun_name']];
             case 'qiniu':
                 return ['accessKey' => $conf['qiniu_ak'], 'secretKey' => $conf['qiniu_sk'], 'bucket' => $conf['qiniu_bucket'], 'domain' => $conf['qiniu_domain']];
+            case 's3':
+                return ['accessKey' => $conf['s3_ak'], 'secretKey' => $conf['s3_sk'], 'region' => $conf['s3_region'], 'endpoint' => $conf['s3_endpoint'], 'bucket' => $conf['s3_bucket'], 'domain' => $conf['s3_domain']];
+            case 'webdav':
+                return ['url' => $conf['webdav_url'], 'user' => $conf['webdav_user'], 'pwd' => $conf['webdav_pwd']];
             default:
                 break;
         }
@@ -46,7 +50,7 @@ class StorHelper
     public static function is_cloud(){
         global $conf;
         $is_cloud = false;
-        if(in_array($conf['storage'], ['oss','qcloud','obs','upyun','qiniu'])) $is_cloud = true;
+        if(in_array($conf['storage'], ['oss','qcloud','obs','upyun','qiniu','s3'])) $is_cloud = true;
         return $is_cloud;
     }
 
@@ -54,7 +58,7 @@ class StorHelper
     public static function is_range(){
         global $conf;
         $is_range = false;
-        if(in_array($conf['storage'], ['local','oss','qcloud','obs','qiniu'])) $is_range = true;
+        if(in_array($conf['storage'], ['local','oss','qcloud','obs','qiniu','s3','webdav'])) $is_range = true;
         return $is_range;
     }
 }

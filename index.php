@@ -42,6 +42,7 @@ if($conf['filesearch']==1 && $kw){
 include SYSTEM_ROOT.'header.php';
 ?>
 <div class="container">
+    <?php if(!empty($conf['ad_index_top'])){?><div class="advertise well bs-component" align="center"><?php echo $conf['ad_index_top']?></div><?php }?>
     <div class="well bs-component">
         <h2><?php echo $htext?>
         <?php if($conf['filesearch']==1){?><span class="searchbox">
@@ -123,6 +124,7 @@ echo '<li class="disabled"><a>尾页</a></li>';
 </nav></div>
 </div>
     </div>
+    <?php if(!empty($conf['ad_index_bottom'])){?><div class="advertise well bs-component" align="center"><?php echo $conf['ad_index_bottom']?></div><?php }?>
 <?php include SYSTEM_ROOT.'footer.php';?>
 <?php if(!empty($conf['gonggao'])){?>
 <link href="https://s4.zstatic.net/ajax/libs/snackbarjs/1.1.0/snackbar.min.css" rel="stylesheet">

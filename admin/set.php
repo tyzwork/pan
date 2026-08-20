@@ -267,6 +267,48 @@ $(document).ready(function(){
 <script>
 </script>
 <?php
+}elseif($mod=='ad'){
+?>
+<div class="panel panel-primary">
+<div class="panel-heading"><h3 class="panel-title">广告位设置</h3></div>
+<div class="panel-body">
+  <form onsubmit="return saveSetting(this)" method="post" class="form-horizontal" role="form">
+	<div class="form-group">
+	  <label class="col-sm-2 control-label">首页顶部广告</label>
+	  <div class="col-sm-10"><textarea class="form-control" name="ad_index_top" rows="4" placeholder="不填写则不显示，支持HTML代码"><?php echo htmlspecialchars($conf['ad_index_top'])?></textarea></div>
+	</div><br/>
+	<div class="form-group">
+	  <label class="col-sm-2 control-label">首页底部广告</label>
+	  <div class="col-sm-10"><textarea class="form-control" name="ad_index_bottom" rows="4" placeholder="不填写则不显示，支持HTML代码"><?php echo htmlspecialchars($conf['ad_index_bottom'])?></textarea></div>
+	</div><br/>
+	<div class="form-group">
+	  <label class="col-sm-2 control-label">文件查看页顶部广告</label>
+	  <div class="col-sm-10"><textarea class="form-control" name="ad_file_top" rows="4" placeholder="不填写则不显示，支持HTML代码"><?php echo htmlspecialchars($conf['ad_file_top'])?></textarea></div>
+	</div><br/>
+	<div class="form-group">
+	  <label class="col-sm-2 control-label">文件查看页底部广告</label>
+	  <div class="col-sm-10"><textarea class="form-control" name="ad_file_bottom" rows="4" placeholder="不填写则不显示，支持HTML代码"><?php echo htmlspecialchars($conf['ad_file_bottom'])?></textarea></div>
+	</div><br/>
+	<div class="form-group">
+	  <label class="col-sm-2 control-label">上传页顶部广告</label>
+	  <div class="col-sm-10"><textarea class="form-control" name="ad_upload_top" rows="4" placeholder="不填写则不显示，支持HTML代码"><?php echo htmlspecialchars($conf['ad_upload_top'])?></textarea></div>
+	</div><br/>
+	<div class="form-group">
+	  <label class="col-sm-2 control-label">上传页底部广告</label>
+	  <div class="col-sm-10"><textarea class="form-control" name="ad_upload_bottom" rows="4" placeholder="不填写则不显示，支持HTML代码"><?php echo htmlspecialchars($conf['ad_upload_bottom'])?></textarea></div>
+	</div><br/>
+	<div class="form-group">
+	  <div class="col-sm-offset-2 col-sm-10"><input type="submit" name="submit" value="修改" class="btn btn-primary form-control"/><br/>
+	 </div>
+	</div>
+  </form>
+</div>
+<div class="panel-footer">
+<span class="glyphicon glyphicon-info-sign"></span>
+广告位支持填写任意HTML代码（如图片、JS广告代码等），直接展示在前台对应位置，不填写则不显示。
+</div>
+</div>
+<?php
 }elseif($mod=='user'){
 ?>
 <div class="panel panel-primary">

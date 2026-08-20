@@ -63,6 +63,7 @@ if($view_type == 'image'){
 }
 ?>
 <div class="container">
+    <?php if(!empty($conf['ad_file_top'])){?><div class="advertise well bs-component" align="center"><?php echo $conf['ad_file_top']?></div><?php }?>
     <div class="row">
 <?php
 if($row['pwd']!=null && $row['pwd']!=$pwd){ ?>
@@ -233,6 +234,7 @@ if($filetype==1){
       </div>
     </div>
   </div>
+<?php if(!empty($conf['ad_file_bottom'])){?><div class="advertise well bs-component" align="center"><?php echo $conf['ad_file_bottom']?></div><?php }?>
 <?php include SYSTEM_ROOT.'footer.php';?>
 <?php if($filetype==2){?>
 <script type="text/javascript" src="https://s4.zstatic.net/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>

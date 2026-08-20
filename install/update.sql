@@ -2,6 +2,21 @@ REPLACE INTO `pre_config` VALUES ('type_image', 'png|jpg|jpeg|gif|bmp|webp|ico|s
 REPLACE INTO `pre_config` VALUES ('type_audio', 'mp3|wav|ogg|m4a|flac|aac');
 REPLACE INTO `pre_config` VALUES ('type_video', 'mp4|webm|flv|f4v|mov|3gp|3gpp|avi|mpg|mpeg|wmv|mkv|ts|dat|asf|mts|m2ts|m3u8|m4v');
 REPLACE INTO `pre_config` VALUES ('filesearch', '1');
+REPLACE INTO `pre_config` VALUES ('s3_ak', '');
+REPLACE INTO `pre_config` VALUES ('s3_sk', '');
+REPLACE INTO `pre_config` VALUES ('s3_region', '');
+REPLACE INTO `pre_config` VALUES ('s3_endpoint', '');
+REPLACE INTO `pre_config` VALUES ('s3_bucket', '');
+REPLACE INTO `pre_config` VALUES ('s3_domain', '');
+REPLACE INTO `pre_config` VALUES ('webdav_url', '');
+REPLACE INTO `pre_config` VALUES ('webdav_user', '');
+REPLACE INTO `pre_config` VALUES ('webdav_pwd', '');
+REPLACE INTO `pre_config` VALUES ('ad_index_top', '');
+REPLACE INTO `pre_config` VALUES ('ad_index_bottom', '');
+REPLACE INTO `pre_config` VALUES ('ad_file_top', '');
+REPLACE INTO `pre_config` VALUES ('ad_file_bottom', '');
+REPLACE INTO `pre_config` VALUES ('ad_upload_top', '');
+REPLACE INTO `pre_config` VALUES ('ad_upload_bottom', '');
 
 ALTER TABLE `pre_file`
 ADD COLUMN `uid` int(11) unsigned NOT NULL DEFAULT '0';

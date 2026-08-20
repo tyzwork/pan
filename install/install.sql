@@ -30,6 +30,21 @@ INSERT INTO `pre_config` VALUES ('green_check_terrorism', '0');
 INSERT INTO `pre_config` VALUES ('green_label_porn', 'sexy,porn');
 INSERT INTO `pre_config` VALUES ('green_label_terrorism', 'bloody,explosion,outfit,logo,weapon,politics');
 INSERT INTO `pre_config` VALUES ('gg_file', '网站所有文件内容均由用户自行上传分享，本站严格遵守国家相关法律法规，尊重著作权、版权等第三方权利，如果当前文件侵犯了您的相关权利，请邮件反馈至@qq.com，我们将及时处理。');
+INSERT INTO `pre_config` VALUES ('s3_ak', '');
+INSERT INTO `pre_config` VALUES ('s3_sk', '');
+INSERT INTO `pre_config` VALUES ('s3_region', '');
+INSERT INTO `pre_config` VALUES ('s3_endpoint', '');
+INSERT INTO `pre_config` VALUES ('s3_bucket', '');
+INSERT INTO `pre_config` VALUES ('s3_domain', '');
+INSERT INTO `pre_config` VALUES ('webdav_url', '');
+INSERT INTO `pre_config` VALUES ('webdav_user', '');
+INSERT INTO `pre_config` VALUES ('webdav_pwd', '');
+INSERT INTO `pre_config` VALUES ('ad_index_top', '');
+INSERT INTO `pre_config` VALUES ('ad_index_bottom', '');
+INSERT INTO `pre_config` VALUES ('ad_file_top', '');
+INSERT INTO `pre_config` VALUES ('ad_file_bottom', '');
+INSERT INTO `pre_config` VALUES ('ad_upload_top', '');
+INSERT INTO `pre_config` VALUES ('ad_upload_bottom', '');
 
 DROP TABLE IF EXISTS `pre_file`;
 CREATE TABLE `pre_file` (

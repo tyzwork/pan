@@ -16,7 +16,7 @@ if($islogin==1){}else exit("<script language='javascript'>window.location.href='
 			<form onsubmit="return saveSetting(this)" method="post" class="form-horizontal" role="form">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">切换存储类型</label>
-					<div class="col-sm-9"><select class="form-control" name="storage" default="<?php echo $conf['storage']?>"><option value="local">本地存储</option><option value="oss">阿里云OSS</option><option value="qcloud">腾讯云COS</option><option value="obs">华为云OBS</option><option value="upyun">又拍云</option><option value="qiniu">七牛云</option><?php if (defined('SAE_ACCESSKEY')) {?><option value="sae">SaeStorage</option><?php }?></select><font color="green">已有文件的情况下请勿随意变更，否则之前上传的文件全部无法下载</font></div>
+					<div class="col-sm-9"><select class="form-control" name="storage" default="<?php echo $conf['storage']?>"><option value="local">本地存储</option><option value="oss">阿里云OSS</option><option value="qcloud">腾讯云COS</option><option value="obs">华为云OBS</option><option value="upyun">又拍云</option><option value="qiniu">七牛云</option><option value="s3">AWS S3兼容存储</option><option value="webdav">WebDAV</option><?php if (defined('SAE_ACCESSKEY')) {?><option value="sae">SaeStorage</option><?php }?></select><font color="green">已有文件的情况下请勿随意变更，否则之前上传的文件全部无法下载</font></div>
 				</div><br/>
 				<div id="cloud_stor" style="display:none;">
 				<div class="form-group">
@@ -241,6 +241,70 @@ if($islogin==1){}else exit("<script language='javascript'>window.location.href='
 		</div>
 		</div>
 	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading"><h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#stor_s3" class="collapsed">AWS S3兼容存储</a><span class="pull-right"><a href="https://aws.amazon.com/cn/s3/" rel="noreferrer" target="_blank" class="btn btn-default btn-xs">AWS控制台</a></span></h3></div>
+		<div id="stor_s3" class="panel-collapse collapse">
+		<div class="panel-body">
+			<form onsubmit="return saveSetting(this)" method="post" class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">AccessKey</label>
+					<div class="col-sm-9"><input type="text" name="s3_ak" value="<?php echo $conf['s3_ak']; ?>" class="form-control"/></div>
+				</div><br/>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">SecretKey</label>
+					<div class="col-sm-9"><input type="text" name="s3_sk" value="<?php echo $conf['s3_sk']; ?>" class="form-control"/></div>
+				</div><br/>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">区域Region</label>
+					<div class="col-sm-9"><input type="text" name="s3_region" value="<?php echo $conf['s3_region']; ?>" class="form-control" placeholder="例如：us-east-1、ap-southeast-1"/></div>
+				</div><br/>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">S3端点EndPoint</label>
+					<div class="col-sm-9"><input type="text" name="s3_endpoint" value="<?php echo $conf['s3_endpoint']; ?>" class="form-control" placeholder="例如：https://s3.amazonaws.com"/><font color="green">支持AWS S3及所有兼容S3协议的服务（MinIO、Cloudflare R2、Backblaze B2等），填写服务地址即可</font></div>
+				</div><br/>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">存储桶名称</label>
+					<div class="col-sm-9"><input type="text" name="s3_bucket" value="<?php echo $conf['s3_bucket']; ?>" class="form-control"/></div>
+				</div><br/>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">空间绑定域名</label>
+					<div class="col-sm-9"><input type="text" name="s3_domain" value="<?php echo $conf['s3_domain']; ?>" class="form-control" placeholder="留空则使用预签名URL"/><font color="green">填写Bucket绑定的公开访问域名，将直接使用该域名生成下载链接</font></div>
+				</div><br/>
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-9"><input type="submit" name="submit" value="修改" class="btn btn-primary btn-block"/>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading"><h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#stor_webdav" class="collapsed">WebDAV</a></h3></div>
+		<div id="stor_webdav" class="panel-collapse collapse">
+		<div class="panel-body">
+			<form onsubmit="return saveSetting(this)" method="post" class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">WebDAV地址</label>
+					<div class="col-sm-9"><input type="text" name="webdav_url" value="<?php echo $conf['webdav_url']; ?>" class="form-control" placeholder="例如：https://dav.example.com/dav/"/><font color="green">填写WebDAV服务根地址，需以http://或https://开头</font></div>
+				</div><br/>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">用户名</label>
+					<div class="col-sm-9"><input type="text" name="webdav_user" value="<?php echo $conf['webdav_user']; ?>" class="form-control"/></div>
+				</div><br/>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">密码</label>
+					<div class="col-sm-9"><input type="text" name="webdav_pwd" value="<?php echo $conf['webdav_pwd']; ?>" class="form-control"/></div>
+				</div><br/>
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-9"><input type="submit" name="submit" value="修改" class="btn btn-primary btn-block"/>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
 </div>
 
 </div>
@@ -262,7 +326,7 @@ $("select[name='downfile_type']").change(function(){
 	}
 });
 $("select[name='storage']").change(function(){
-	if($(this).val() == 'local' || $(this).val() == 'sae'){
+	if($(this).val() == 'local' || $(this).val() == 'sae' || $(this).val() == 'webdav'){
 		$("#cloud_stor").hide();
 	}else{
 		$("#cloud_stor").show();
