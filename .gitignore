@@ -1,0 +1,11 @@
+# 运行数据与本地配置
+/uploads/*
+!/uploads/.htaccess
+/config.local.php
+*.log
+
+# IDE 与系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

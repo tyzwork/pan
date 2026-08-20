@@ -1,0 +1,4 @@
+# 禁止直接访问上传目录中的脚本文件
+<FilesMatch "\.(php|php5|phtml|asp|jsp|sh)$">
+    Require all denied
+</FilesMatch>

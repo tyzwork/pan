@@ -1,0 +1,21 @@
+/* 主题：深色科技（深蓝/黑色背景，霓虹蓝高亮） */
+:root {
+    --bg: #0b1220;
+    --bg-accent: #0f172a;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --card: #111a2e;
+    --card-hover: #16213c;
+    --border: #1e293b;
+    --accent: #38bdf8;
+    --accent-2: #818cf8;
+    --accent-soft: rgba(56, 189, 248, 0.14);
+    --header-bg: rgba(11, 18, 32, 0.72);
+    --radius: 14px;
+    --shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+    --danger: #f87171;
+    --success: #34d399;
+}
+/* 暗色下预览代码区加亮 */
+.preview-code { background: #0a0f1e; color: #d1e3f8; }
+.dropzone { background: #0f1a30; }

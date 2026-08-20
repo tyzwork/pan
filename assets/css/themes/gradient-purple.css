@@ -1,0 +1,25 @@
+/* 主题：渐变紫蓝（紫色到蓝色渐变背景） */
+:root {
+    --bg: #eef1ff;
+    --bg-accent: #dfe7ff;
+    --text: #1e1b4b;
+    --muted: #6d6a9e;
+    --card: #ffffff;
+    --card-hover: #ffffff;
+    --border: #d9dcf3;
+    --accent: #7c3aed;
+    --accent-2: #3b82f6;
+    --accent-soft: rgba(124, 58, 237, 0.12);
+    --header-bg: rgba(255, 255, 255, 0.66);
+    --radius: 16px;
+    --shadow: 0 4px 18px rgba(76, 29, 149, 0.10);
+    --danger: #ef4444;
+    --success: #10b981;
+}
+.bg-canvas {
+    background:
+        radial-gradient(1100px 600px at 10% -10%, rgba(124, 58, 237, 0.16), transparent 60%),
+        radial-gradient(1000px 550px at 90% 0%, rgba(59, 130, 246, 0.16), transparent 55%),
+        linear-gradient(135deg, #eef1ff 0%, #e0e7ff 50%, #ede9fe 100%);
+}
+.file-card, .side-card, .dropzone, .auth-card, .table-card { border-radius: 18px; }
